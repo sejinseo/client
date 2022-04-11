@@ -9,11 +9,18 @@ import HorizonLine from "../HorizonLine";
 import {useDispatch} from 'react-redux';
 import { loginUser } from '../../_reducers/user_action';
 import { useNavigate } from "react-router-dom";
+import Auth from './kakaologin/Auth';
 
-// d5b5727cf3aebb1508c6e0c0e1f0d42f
 
 
 const SignInModal = ({show, onHide}) => {
+
+    const REST_API_KEY = "d5b5727cf3aebb1508c6e0c0e1f0d42f"
+    // 카카오 로그인 만들때 설정된 REST API키 값
+    const REDIRECT_URI = "http://1.1.1.168:3000/oauth/kakao/callback"
+    // 카카오 로그인 만들때 설정한 redirect_uri + oauth/kakao/callback
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -89,7 +96,7 @@ const SignInModal = ({show, onHide}) => {
                            </Button> 
                         }}
                     />
-                    <img style={{width:"100%", height:"45px", marginTop:"10px", marginBottom:"10px"}} src="../img/kakao_login_medium_wide.png" alt="kakao button"/>
+                    <a href={KAKAO_AUTH_URL}><img style={{width:"100%", height:"45px", marginTop:"10px", marginBottom:"10px"}} src="../img/kakao_login_medium_wide.png" alt="kakao button"/></a>
                 </Form>
                 </Modal.Body>
                 

@@ -6,6 +6,8 @@ import Camerashop from "./components/camera/Camerashop";
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import Manager from "./components/manager/Manager"
 import Product from './components/manager/Product';
+import Auth from "./components/users/kakaologin/Auth";
+import Profile from './components/users/kakaologin/Profile';
 
 function App() {
  
@@ -19,7 +21,8 @@ function App() {
           <Route path="/camerashop" element={<Camerashop/>}/>
           <Route path="/manager" element={<Manager/>}/>
           <Route path="/product" element={<Product/>}/>
-          
+          <Route path="/oauth/kakao/callback" element={<Auth />}/>
+          <Route path="/Profile" element={<Profile/>}/>
         </Routes>
       </div>
     </BrowserRouter>
